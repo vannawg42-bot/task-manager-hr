@@ -19,7 +19,7 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-.app{max-width:860px;margin:0 auto;padding:1.5rem 1rem 4rem}
+.app{max-width:900px;margin:0 auto;padding:1.5rem 1rem 4rem}
 .app-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
 .app-title{font-size:20px;font-weight:600}
 .sync-status{font-size:12px;padding:3px 10px;border-radius:20px;background:var(--surface2);border:0.5px solid var(--border);color:var(--text2);display:flex;align-items:center;gap:5px}
@@ -36,44 +36,63 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 .sort-toolbar select{font-size:12px;border:0.5px solid var(--border-strong);border-radius:var(--radius);padding:4px 8px;background:var(--bg);color:var(--text);cursor:pointer}
 .btn{padding:7px 14px;border-radius:var(--radius);border:0.5px solid var(--border-strong);background:var(--surface);color:var(--text);cursor:pointer;font-size:13px;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;transition:all .15s}
 .btn:hover{background:var(--surface2)}.btn.primary{background:var(--accent);color:#fff;border-color:transparent}.btn.primary:hover{opacity:.88}
-.btn.success-btn{background:var(--success);color:#fff;border-color:transparent;font-size:12px;padding:4px 11px;border-radius:20px}.btn.success-btn:hover{opacity:.88}
+.btn.success-btn{background:var(--success);color:#fff;border-color:transparent;font-size:12px;padding:4px 11px;border-radius:20px;flex-shrink:0}.btn.success-btn:hover{opacity:.88}
 .btn.export-btn{background:#185FA5;color:#fff;border-color:transparent}.btn.export-btn:hover{background:#0C447C}
-.btn.sm{padding:3px 8px;font-size:12px}
+.btn.sm{padding:3px 8px;font-size:12px}.btn.danger{color:#E24B4A;border-color:#f7c1c1}
+/* Group */
 .group{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;margin-bottom:.75rem;box-shadow:var(--shadow)}
-.group-header{display:flex;align-items:center;gap:8px;padding:.75rem 1rem;cursor:pointer;user-select:none}
+.group-header{display:flex;align-items:center;gap:8px;padding:.75rem 1rem;user-select:none}
+.group-header-click{display:flex;align-items:center;gap:8px;flex:1;cursor:pointer;min-width:0}
 .color-dot{width:11px;height:11px;border-radius:50%;flex-shrink:0}
-.group-title{font-size:20px;font-weight:500;flex:1}
-.group-badge{font-size:12px;padding:2px 9px;border-radius:20px;background:var(--accent-bg);color:var(--accent-text)}
-.tag-badge{font-size:11px;padding:2px 8px;border-radius:20px;background:#EEEDFE;color:#3C3489;font-weight:500}
-.chevron{font-size:15px;color:var(--text3);transition:transform .2s}.chevron.open{transform:rotate(180deg)}
+.group-title{font-size:20px;font-weight:500;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.group-badge{font-size:12px;padding:2px 9px;border-radius:20px;background:var(--accent-bg);color:var(--accent-text);flex-shrink:0}
+.tag-badge{font-size:11px;padding:2px 8px;border-radius:20px;background:#EEEDFE;color:#3C3489;font-weight:500;flex-shrink:0}
+.chevron{font-size:15px;color:var(--text3);transition:transform .2s;flex-shrink:0}.chevron.open{transform:rotate(180deg)}
 .group-body{border-top:0.5px solid var(--border)}
+/* More menu */
+.more-btn{padding:4px 7px;border-radius:var(--radius);border:none;background:transparent;color:var(--text3);cursor:pointer;font-size:16px;display:inline-flex;align-items:center;flex-shrink:0}
+.more-btn:hover{background:var(--surface2);color:var(--text)}
+.more-menu-wrap{position:relative;flex-shrink:0}
+.more-menu{position:absolute;right:0;top:110%;background:var(--surface);border:0.5px solid var(--border);border-radius:var(--radius);box-shadow:0 4px 16px rgba(0,0,0,.12);z-index:50;min-width:110px;overflow:hidden}
+.more-menu-item{padding:9px 14px;font-size:13px;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap}
+.more-menu-item:hover{background:var(--surface2)}
+.more-menu-item.danger{color:#E24B4A}
+/* Sub item */
 .sub-item{padding:.9rem 1rem .9rem 2.25rem;border-bottom:0.5px solid var(--border);background:var(--surface2)}
 .sub-item:last-child{border-bottom:none}
-.sub-title-row{display:flex;align-items:center;gap:8px;margin-bottom:.6rem;flex-wrap:wrap}
+.sub-title-row{display:flex;align-items:center;gap:8px;margin-bottom:.6rem}
 .sub-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.sub-title{font-size:18px;font-weight:500;flex:1;min-width:80px}
-.status-badge{font-size:12px;padding:3px 9px;border-radius:20px;font-weight:500;white-space:nowrap}
-.priority-badge{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:500;white-space:nowrap}
-.prog-inline{display:flex;align-items:center;gap:6px;min-width:150px}
-.prog-pct{font-size:13px;font-weight:500;color:var(--text2);width:34px;text-align:right;flex-shrink:0}
-input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;border:none;background:none}
+.sub-title{font-size:18px;font-weight:500;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.status-badge{font-size:12px;padding:3px 9px;border-radius:20px;font-weight:500;white-space:nowrap;flex-shrink:0}
+.priority-badge{font-size:11px;padding:2px 7px;border-radius:20px;font-weight:500;white-space:nowrap;flex-shrink:0}
+/* Progress — fixed width to prevent drift */
+.prog-wrap{display:flex;align-items:center;gap:6px;width:180px;flex-shrink:0}
+.prog-pct{font-size:12px;font-weight:500;color:var(--text2);width:32px;text-align:right;flex-shrink:0}
+input[type=range].prog-slider{width:100px;flex-shrink:0;height:4px;cursor:pointer;border:none;background:none;display:block}
+.sub-actions{display:flex;align-items:center;gap:4px;flex-shrink:0}
+/* Meta */
 .meta-fields{display:flex;flex-direction:column;gap:7px;margin-top:.5rem}
 .meta-field label{font-size:12px;color:var(--text3);display:block;margin-bottom:3px}
 .meta-field input[type=text],.meta-field textarea{width:100%;font-size:13px;border:0.5px solid var(--border);border-radius:var(--radius);padding:5px 8px;background:var(--bg);color:var(--text);font-family:inherit;outline:none}
 .meta-field textarea{resize:none;height:52px}
+/* Flat */
 .flat-item{background:var(--surface);border:0.5px solid var(--border);border-radius:10px;margin-bottom:.6rem;padding:.85rem 1rem;box-shadow:var(--shadow)}
 .flat-group-label{font-size:11px;color:var(--text3);margin-top:5px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+/* Priority/status colors */
 .pri-high{background:#FAECE7;color:#993C1D}.pri-mid{background:#FAEEDA;color:#854F0B}.pri-low{background:#EAF3DE;color:#3B6D11}
 .st-todo{background:var(--warning-bg);color:var(--warning-text)}.st-prog{background:var(--accent-bg);color:var(--accent-text)}.st-done{background:var(--success-bg);color:var(--success-text)}
+/* Matrix */
 .matrix-wrap{margin-top:.5rem}
 .axis-labels{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px}
 .axis-label{font-size:11px;color:var(--text3);text-align:center;padding:3px 0;border:0.5px dashed var(--border);border-radius:var(--radius)}
 .matrix{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .quadrant{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:.85rem;min-height:150px;box-shadow:var(--shadow)}
 .q-label{font-size:12px;font-weight:500;margin-bottom:.6rem}
-.q-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:3px 9px 3px 6px;border-radius:20px;margin:3px 3px 3px 0;border:0.5px solid var(--border);background:var(--surface2)}
+.q-chip{display:inline-flex;align-items:center;gap:5px;font-size:12px;padding:4px 10px 4px 7px;border-radius:20px;margin:3px 3px 3px 0;border:0.5px solid var(--border);background:var(--surface2);cursor:pointer;transition:background .15s}
+.q-chip:hover{background:var(--accent-bg)}
 .q-chip .dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
-.acc-toolbar{display:flex;justify-content:flex-end;align-items:center;margin-bottom:1rem;gap:8px}
+/* Accomplish */
+.acc-toolbar{display:flex;justify-content:flex-end;align-items:center;margin-bottom:1rem;gap:8px;flex-wrap:wrap}
 .acc-group{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;margin-bottom:.75rem;box-shadow:var(--shadow);overflow:hidden}
 .acc-group-hdr{display:flex;align-items:center;gap:8px;padding:.7rem 1rem;background:var(--surface2);border-bottom:0.5px solid var(--border)}
 .acc-group-name{font-size:20px;font-weight:500;flex:1}
@@ -84,6 +103,7 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
 .acc-name{font-size:18px;font-weight:500;margin-bottom:4px}
 .acc-ts{font-size:13px;color:var(--text3);display:flex;gap:14px;flex-wrap:wrap;margin-bottom:6px}
 .acc-note{font-size:13px;color:var(--text2);background:var(--surface2);border-radius:var(--radius);padding:6px 9px;border:0.5px solid var(--border);line-height:1.6}
+/* Export */
 .export-section{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:1.25rem;margin-bottom:1rem;box-shadow:var(--shadow)}
 .export-section h3{font-size:15px;font-weight:500;margin-bottom:.5rem;display:flex;align-items:center;gap:6px}
 .export-section p{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:.9rem}
@@ -91,10 +111,12 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
 .export-row input{flex:1;min-width:0;height:36px;font-size:13px;padding:0 10px;border-radius:var(--radius);border:0.5px solid var(--border-strong);background:var(--bg);color:var(--text);outline:none}
 .gs-connected{display:inline-flex;align-items:center;gap:6px;font-size:13px;color:var(--success);font-weight:500}
 .info-box{background:var(--accent-bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:12px;color:var(--text2);line-height:1.7;margin-top:.75rem}
+/* Toast */
 .toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(10px);background:#1a1a18;color:#fff;padding:9px 22px;border-radius:20px;font-size:13px;font-weight:500;z-index:999;opacity:0;transition:opacity .25s,transform .25s;pointer-events:none}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:flex-start;justify-content:center;padding-top:80px;z-index:300}
-.modal{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;width:400px;max-width:95vw;max-height:85vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+/* Modal */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:flex-start;justify-content:center;padding-top:60px;z-index:300}
+.modal{background:var(--surface);border:0.5px solid var(--border);border-radius:12px;padding:1.5rem;width:420px;max-width:95vw;max-height:88vh;overflow-y:auto;box-shadow:0 8px 32px rgba(0,0,0,.15)}
 .modal h3{font-size:16px;font-weight:600;margin-bottom:1.1rem}
 .form-group{margin-bottom:.85rem}
 .form-group label{font-size:13px;color:var(--text2);display:block;margin-bottom:5px;font-weight:500}
@@ -124,10 +146,12 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
     <button class="tab" onclick="switchTab('export')"><i class="ti ti-settings"></i> 設定與匯出</button>
   </div>
 
-  <!-- LIST VIEW -->
+  <!-- LIST -->
   <div id="listView">
     <div class="toolbar">
       <button class="btn primary" onclick="openNewGroupModal()"><i class="ti ti-plus"></i> 新增大項目</button>
+      <button class="btn sm" onclick="toggleAllGroups(true)" title="全部展開"><i class="ti ti-chevrons-down"></i></button>
+      <button class="btn sm" onclick="toggleAllGroups(false)" title="全部折疊"><i class="ti ti-chevrons-up"></i></button>
       <input type="text" id="searchBox" placeholder="搜尋工項..." oninput="renderList()">
     </div>
     <div class="sort-toolbar">
@@ -144,14 +168,12 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
         <option value="tag">標籤</option>
       </select>
       <label>標籤篩選：</label>
-      <select id="filterTag" onchange="renderList()">
-        <option value="">全部</option>
-      </select>
+      <select id="filterTag" onchange="renderList()"><option value="">全部</option></select>
     </div>
     <div id="listContainer"></div>
   </div>
 
-  <!-- MATRIX VIEW -->
+  <!-- MATRIX -->
   <div id="matrixView" class="hidden">
     <div class="matrix-wrap">
       <div class="axis-labels"><div class="axis-label">← 不緊急</div><div class="axis-label">緊急 →</div></div>
@@ -164,28 +186,30 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
     </div>
   </div>
 
-  <!-- ACCOMPLISH VIEW -->
+  <!-- ACCOMPLISH -->
   <div id="accomplishView" class="hidden">
     <div class="acc-toolbar">
-      <span style="font-size:13px;color:var(--text2)">排序：</span>
-      <select id="accSort" onchange="renderAccomplish()" style="font-size:13px;border:0.5px solid var(--border-strong);border-radius:var(--radius);padding:6px 10px;background:var(--bg);color:var(--text)">
+      <label style="font-size:13px;color:var(--text2)">標籤篩選：</label>
+      <select id="accFilterTag" onchange="renderAccomplish()" style="font-size:13px;border:0.5px solid var(--border-strong);border-radius:var(--radius);padding:5px 9px;background:var(--bg);color:var(--text)"><option value="">全部</option></select>
+      <label style="font-size:13px;color:var(--text2)">排序：</label>
+      <select id="accSort" onchange="renderAccomplish()" style="font-size:13px;border:0.5px solid var(--border-strong);border-radius:var(--radius);padding:5px 9px;background:var(--bg);color:var(--text)">
         <option value="created">建立時間</option><option value="done">完成時間</option>
       </select>
     </div>
     <div id="accomplishContainer"></div>
   </div>
 
-  <!-- EXPORT VIEW -->
+  <!-- EXPORT -->
   <div id="exportView" class="hidden">
     <div class="export-section">
       <h3><i class="ti ti-brand-google" style="font-size:16px"></i> Google Sheets 即時同步</h3>
-      <p>每次新增、編輯、完成工項時自動同步至 Google Sheets，以年份欄位區隔紀錄。</p>
+      <p>每次新增、編輯、完成工項時自動同步至 Google Sheets。</p>
       <div id="gsFormArea">
         <div class="export-row">
-          <input type="text" id="scriptUrlInput" placeholder="貼上 Apps Script 網址（https://script.google.com/macros/s/...）">
+          <input type="text" id="scriptUrlInput" placeholder="貼上 Apps Script 網址">
           <button class="btn primary" onclick="saveScriptUrl()"><i class="ti ti-plug"></i> 連接</button>
         </div>
-        <div class="info-box">Apps Script 網址僅儲存於你的瀏覽器 localStorage，不會傳送至任何第三方。</div>
+        <div class="info-box">網址僅存於瀏覽器 localStorage，不會傳送至第三方。</div>
       </div>
       <div id="gsConnected" class="hidden">
         <span class="gs-connected"><i class="ti ti-circle-check"></i> 已連接 Google Sheets</span>
@@ -195,7 +219,7 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
     </div>
     <div class="export-section">
       <h3><i class="ti ti-download" style="font-size:16px"></i> 匯出資料（報告用）</h3>
-      <p>將所有工項與已完成紀錄打包匯出，可直接把 JSON 貼給 Claude 生成報表或年度成就報告；CSV 可用 Excel 直接開啟。</p>
+      <p>將所有工項與已完成紀錄打包匯出，可直接把 JSON 貼給 Claude 生成報表或年度成就報告；CSV 可用 Excel 開啟。</p>
       <div class="export-row">
         <button class="btn export-btn" onclick="exportJSON()"><i class="ti ti-brackets"></i> 匯出 JSON</button>
         <button class="btn export-btn" onclick="exportCSV()"><i class="ti ti-table"></i> 匯出 CSV</button>
@@ -209,7 +233,7 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
 <!-- NEW GROUP MODAL -->
 <div class="modal-bg hidden" id="newGroupModal" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal" onclick="event.stopPropagation()">
-    <h3>新增大項目</h3>
+    <h3 id="groupModalTitle">新增大項目</h3>
     <div class="form-group"><label>名稱</label><input type="text" id="ngName" placeholder="大項目名稱"></div>
     <div class="form-group"><label>緊急度</label><select id="ngUrg"><option value="urgent">緊急</option><option value="normal" selected>不緊急</option></select></div>
     <div class="form-group"><label>重要度</label><select id="ngImp"><option value="high">重要</option><option value="low" selected>不重要</option></select></div>
@@ -222,16 +246,10 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
         <button class="btn sm" onclick="openTagManager()" type="button"><i class="ti ti-pencil"></i> 管理</button>
       </div>
     </div>
+    <input type="hidden" id="ngEditId">
     <div class="modal-btns">
-      <button class="btn" onclick="document.getElementById('newGroupModal').classList.add('hidden')">取消</button>
-      <button class="btn primary" onclick="saveNewGroup()">新增</button>
-    </div>
-    <div style="margin-top:1.25rem;padding-top:1rem;border-top:0.5px solid var(--border)">
-      <p style="font-size:12px;color:var(--text3);margin-bottom:.6rem">刪除現有大項目（含其所有小項目）</p>
-      <div style="display:flex;gap:8px;align-items:center">
-        <select id="delGroupSelect" style="flex:1;font-size:13px;border:0.5px solid var(--border-strong);border-radius:var(--radius);padding:6px 9px;background:var(--bg);color:var(--text)"><option value="">— 選擇要刪除的大項目 —</option></select>
-        <button class="btn sm" style="color:#E24B4A;border-color:#f7c1c1;white-space:nowrap" onclick="deleteGroup()"><i class="ti ti-trash"></i> 刪除</button>
-      </div>
+      <button class="btn" onclick="closeGroupModal()">取消</button>
+      <button class="btn primary" onclick="saveGroup()">儲存</button>
     </div>
   </div>
 </div>
@@ -239,16 +257,17 @@ input[type=range].prog-slider{flex:1;min-width:80px;height:4px;cursor:pointer;bo
 <!-- NEW SUB MODAL -->
 <div class="modal-bg hidden" id="newSubModal" onclick="if(event.target===this)this.classList.add('hidden')">
   <div class="modal" onclick="event.stopPropagation()">
-    <h3>新增小項目</h3>
+    <h3 id="subModalTitle">新增小項目</h3>
     <div class="form-group"><label>名稱</label><input type="text" id="nsName" placeholder="小項目名稱"></div>
     <div class="form-group"><label>優先度</label><select id="nsPri"><option value="high">高</option><option value="mid" selected>中</option><option value="low">低</option></select></div>
     <div class="form-group"><label>顏色</label><div class="color-picker" id="nsColorPicker"></div></div>
     <div class="form-group"><label>備註</label><input type="text" id="nsRef" placeholder="備註說明"></div>
     <div class="form-group"><label>討論/說明</label><textarea id="nsNote" placeholder="需要討論或補充的事項..."></textarea></div>
     <input type="hidden" id="nsGid">
+    <input type="hidden" id="nsEditId">
     <div class="modal-btns">
       <button class="btn" onclick="document.getElementById('newSubModal').classList.add('hidden')">取消</button>
-      <button class="btn primary" onclick="saveNewSub()">新增</button>
+      <button class="btn primary" onclick="saveSub()">儲存</button>
     </div>
   </div>
 </div>
@@ -293,7 +312,7 @@ let data={groups:[],accomplished:[]};
 let scriptUrl='';
 let tags=[...DEFAULT_TAGS];
 let _ngColor=COLORS[0],_nsColor=COLORS[0];
-let _debounceMap={};
+let _db={};
 
 function save(){try{localStorage.setItem(LS_DATA,JSON.stringify(data));}catch(e){}}
 function load(){try{const d=localStorage.getItem(LS_DATA);if(d)data=JSON.parse(d);}catch(e){}}
@@ -326,14 +345,17 @@ function buildColorPicker(cid,sel,cb){
   cp.querySelectorAll('.color-opt').forEach(el=>el.onclick=()=>{cp.querySelectorAll('.color-opt').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');cb(el.dataset.c)});
 }
 
-/* TAG */
+/* TAGS */
 function buildTagSelect(selId,selectedVal){
   const sel=document.getElementById(selId);if(!sel)return;
   sel.innerHTML='<option value="">— 無 —</option>'+tags.map(t=>`<option value="${esc(t)}"${t===selectedVal?' selected':''}>${esc(t)}</option>`).join('');
 }
 function buildFilterTag(){
-  const sel=document.getElementById('filterTag');const cur=sel.value;
-  sel.innerHTML='<option value="">全部</option>'+tags.map(t=>`<option value="${esc(t)}"${t===cur?' selected':''}>${esc(t)}</option>`).join('');
+  ['filterTag','accFilterTag'].forEach(id=>{
+    const sel=document.getElementById(id);if(!sel)return;
+    const cur=sel.value;
+    sel.innerHTML='<option value="">全部</option>'+tags.map(t=>`<option value="${esc(t)}"${t===cur?' selected':''}>${esc(t)}</option>`).join('');
+  });
 }
 function openTagManager(){renderTagList();document.getElementById('tagModal').classList.remove('hidden');}
 function renderTagList(){
@@ -353,6 +375,7 @@ function switchTab(t){
   ['list','matrix','accomplish','export'].forEach(v=>document.getElementById(v+'View').classList.toggle('hidden',v!==t));
   document.querySelectorAll('.tab').forEach((b,i)=>b.classList.toggle('active',['list','matrix','accomplish','export'][i]===t));
   if(t==='matrix')renderMatrix();if(t==='accomplish')renderAccomplish();if(t==='export')renderExportPage();
+  document.querySelectorAll('.more-menu').forEach(m=>m.remove());
 }
 
 /* VIEW MODE */
@@ -363,43 +386,104 @@ function onViewModeChange(){
   renderList();
 }
 
-/* GROUP */
+/* COLLAPSE ALL */
+function toggleAllGroups(open){data.groups.forEach(g=>g.open=open);save();renderList();}
+
+/* MORE MENU */
+function toggleMoreMenu(gid,btn){
+  document.querySelectorAll('.more-menu').forEach(m=>{if(m.dataset.gid!==gid)m.remove();});
+  const existing=document.querySelector(`.more-menu[data-gid="${gid}"]`);
+  if(existing){existing.remove();return;}
+  const menu=document.createElement('div');
+  menu.className='more-menu';menu.dataset.gid=gid;
+  menu.innerHTML=`<div class="more-menu-item" onclick="openEditGroupModal('${gid}')"><i class="ti ti-pencil"></i> 編輯</div><div class="more-menu-item danger" onclick="confirmDeleteGroup('${gid}')"><i class="ti ti-trash"></i> 刪除</div>`;
+  btn.closest('.more-menu-wrap').appendChild(menu);
+  setTimeout(()=>document.addEventListener('click',function handler(e){if(!menu.contains(e.target)&&e.target!==btn){menu.remove();document.removeEventListener('click',handler);}},{once:false}),10);
+}
+
+/* GROUP MODAL */
 function openNewGroupModal(){
-  document.getElementById('ngName').value='';_ngColor=COLORS[0];
-  buildColorPicker('ngColorPicker',_ngColor,c=>{_ngColor=c});
+  document.getElementById('groupModalTitle').textContent='新增大項目';
+  document.getElementById('ngName').value='';
+  document.getElementById('ngUrg').value='normal';
+  document.getElementById('ngImp').value='low';
+  document.getElementById('ngPri').value='mid';
+  document.getElementById('ngEditId').value='';
+  _ngColor=COLORS[0];buildColorPicker('ngColorPicker',_ngColor,c=>{_ngColor=c});
   buildTagSelect('ngTag','');
-  const sel=document.getElementById('delGroupSelect');
-  sel.innerHTML='<option value="">— 選擇要刪除的大項目 —</option>'+data.groups.map(g=>`<option value="${g.id}">${esc(g.name)}（${g.subs.length} 個小項目）</option>`).join('');
   document.getElementById('newGroupModal').classList.remove('hidden');
   setTimeout(()=>document.getElementById('ngName').focus(),100);
 }
-function saveNewGroup(){
-  const name=document.getElementById('ngName').value.trim();if(!name)return;
-  data.groups.push({id:uid(),name,pri:document.getElementById('ngPri').value,color:_ngColor,urg:document.getElementById('ngUrg').value,imp:document.getElementById('ngImp').value,tag:document.getElementById('ngTag').value,open:true,subs:[]});
-  sortGroups();save();document.getElementById('newGroupModal').classList.add('hidden');buildFilterTag();renderList();
+function openEditGroupModal(gid){
+  document.querySelectorAll('.more-menu').forEach(m=>m.remove());
+  const g=data.groups.find(x=>x.id===gid);if(!g)return;
+  document.getElementById('groupModalTitle').textContent='編輯大項目';
+  document.getElementById('ngName').value=g.name;
+  document.getElementById('ngUrg').value=g.urg||'normal';
+  document.getElementById('ngImp').value=g.imp||'low';
+  document.getElementById('ngPri').value=g.pri||'mid';
+  document.getElementById('ngEditId').value=gid;
+  _ngColor=g.color||COLORS[0];buildColorPicker('ngColorPicker',_ngColor,c=>{_ngColor=c});
+  buildTagSelect('ngTag',g.tag||'');
+  document.getElementById('newGroupModal').classList.remove('hidden');
+  setTimeout(()=>document.getElementById('ngName').focus(),100);
 }
-function deleteGroup(){
-  const gid=document.getElementById('delGroupSelect').value;if(!gid){showToast('請先選擇要刪除的大項目','#BA7517');return}
+function closeGroupModal(){document.getElementById('newGroupModal').classList.add('hidden');}
+function saveGroup(){
+  const name=document.getElementById('ngName').value.trim();if(!name)return;
+  const editId=document.getElementById('ngEditId').value;
+  const payload={name,pri:document.getElementById('ngPri').value,color:_ngColor,urg:document.getElementById('ngUrg').value,imp:document.getElementById('ngImp').value,tag:document.getElementById('ngTag').value};
+  if(editId){
+    const g=data.groups.find(x=>x.id===editId);if(g)Object.assign(g,payload);
+  } else {
+    data.groups.push({id:uid(),...payload,open:true,subs:[]});
+  }
+  sortGroups();save();closeGroupModal();buildFilterTag();renderList();
+}
+function confirmDeleteGroup(gid){
+  document.querySelectorAll('.more-menu').forEach(m=>m.remove());
   const g=data.groups.find(x=>x.id===gid);if(!g)return;
   if(!confirm(`確定刪除「${g.name}」及其 ${g.subs.length} 個小項目？此動作無法復原。`))return;
   data.groups=data.groups.filter(x=>x.id!==gid);
-  save();document.getElementById('newGroupModal').classList.add('hidden');buildFilterTag();renderList();showToast(`「${g.name}」已刪除`);
+  save();buildFilterTag();renderList();showToast(`「${g.name}」已刪除`);
 }
 
-/* SUB */
+/* SUB MODAL */
 function openNewSubModal(gid){
-  document.getElementById('nsName').value='';document.getElementById('nsRef').value='';document.getElementById('nsNote').value='';document.getElementById('nsGid').value=gid;
+  document.getElementById('subModalTitle').textContent='新增小項目';
+  document.getElementById('nsName').value='';document.getElementById('nsRef').value='';document.getElementById('nsNote').value='';
+  document.getElementById('nsGid').value=gid;document.getElementById('nsEditId').value='';
   _nsColor=COLORS[0];buildColorPicker('nsColorPicker',_nsColor,c=>{_nsColor=c});
   document.getElementById('newSubModal').classList.remove('hidden');setTimeout(()=>document.getElementById('nsName').focus(),100);
 }
-function saveNewSub(){
+function openEditSubModal(gid,sid){
+  const g=data.groups.find(x=>x.id===gid);const s=g&&g.subs.find(x=>x.id===sid);if(!s)return;
+  document.getElementById('subModalTitle').textContent='編輯小項目';
+  document.getElementById('nsName').value=s.name;
+  document.getElementById('nsPri').value=s.pri;
+  document.getElementById('nsRef').value=s.ref||'';
+  document.getElementById('nsNote').value=s.note||'';
+  document.getElementById('nsGid').value=gid;document.getElementById('nsEditId').value=sid;
+  _nsColor=s.color||COLORS[0];buildColorPicker('nsColorPicker',_nsColor,c=>{_nsColor=c});
+  document.getElementById('newSubModal').classList.remove('hidden');setTimeout(()=>document.getElementById('nsName').focus(),100);
+}
+function saveSub(){
   const name=document.getElementById('nsName').value.trim();if(!name)return;
-  const gid=document.getElementById('nsGid').value;const g=data.groups.find(x=>x.id===gid);
-  if(g){
+  const gid=document.getElementById('nsGid').value;const editId=document.getElementById('nsEditId').value;
+  const g=data.groups.find(x=>x.id===gid);if(!g)return;
+  if(editId){
+    const s=g.subs.find(x=>x.id===editId);
+    if(s){s.name=name;s.pri=document.getElementById('nsPri').value;s.color=_nsColor;s.ref=document.getElementById('nsRef').value;s.note=document.getElementById('nsNote').value;save();syncRow(s,g,false);}
+  } else {
     const sub={id:uid(),name,pri:document.getElementById('nsPri').value,color:_nsColor,prog:0,ref:document.getElementById('nsRef').value,note:document.getElementById('nsNote').value,createdAt:Date.now()};
     g.subs.push(sub);g.subs.sort((a,b)=>priOrder(a.pri)-priOrder(b.pri));save();syncRow(sub,g,false);
   }
   document.getElementById('newSubModal').classList.add('hidden');renderList();
+}
+function deleteSub(gid,sid){
+  if(!confirm('確定刪除此小項目？此動作無法復原。'))return;
+  const g=data.groups.find(x=>x.id===gid);if(!g)return;
+  g.subs=g.subs.filter(x=>x.id!==sid);save();renderList();showToast('小項目已刪除');
 }
 
 /* COMPLETE */
@@ -413,22 +497,15 @@ function completeSub(gid,sid){
 }
 function updateAccBadge(){const b=document.getElementById('accBadge');if(data.accomplished.length){b.textContent=data.accomplished.length;b.classList.remove('hidden')}else b.classList.add('hidden');}
 
-/* DELETE SUB */
-function deleteSub(gid,sid){
-  if(!confirm('確定刪除此小項目？此動作無法復原。'))return;
-  const g=data.groups.find(x=>x.id===gid);if(!g)return;
-  g.subs=g.subs.filter(x=>x.id!==sid);save();renderList();showToast('小項目已刪除');
-}
-
 /* RENDER LIST */
 function renderList(){
   const q=(document.getElementById('searchBox')||{}).value?.toLowerCase()||'';
   const filterTag=document.getElementById('filterTag').value;
   const viewMode=document.getElementById('viewMode').value;
   const c=document.getElementById('listContainer');
+  document.querySelectorAll('.more-menu').forEach(m=>m.remove());
 
   if(viewMode==='flat'){
-    // flat mode: collect all subs, sort, filter
     const sortBy=document.getElementById('sortBy').value;
     let allSubs=[];
     data.groups.forEach(g=>{
@@ -448,15 +525,14 @@ function renderList(){
     if(!allSubs.length){c.innerHTML='<div class="empty"><i class="ti ti-inbox" style="font-size:32px;display:block;margin-bottom:8px"></i>尚無符合的工項</div>';return}
     c.innerHTML=allSubs.map(({s,g})=>`<div class="flat-item">${subTitleRowHtml(s,g.id)}
 <div class="flat-group-label">
-  <span style="color:var(--text3)">所屬：</span>
+  <span>所屬：</span>
   <span style="display:inline-flex;align-items:center;gap:4px"><span style="width:8px;height:8px;border-radius:50%;background:${g.color};display:inline-block"></span>${esc(g.name)}</span>
   ${g.tag?`<span class="tag-badge">${esc(g.tag)}</span>`:''}
-  <span class="priority-badge ${priClass(g.pri)}" style="font-size:10px">緊急:${g.urg==='urgent'?'是':'否'}</span>
+  <span class="priority-badge ${g.urg==='urgent'?'pri-high':'pri-low'}" style="font-size:10px">緊急:${g.urg==='urgent'?'是':'否'}</span>
   <span class="priority-badge ${g.imp==='high'?'pri-high':'pri-low'}" style="font-size:10px">重要:${g.imp==='high'?'是':'否'}</span>
 </div>
 ${subMetaHtml(s,g.id)}</div>`).join('');
   } else {
-    // group mode
     const visible=data.groups.filter(g=>{
       if(filterTag&&g.tag!==filterTag)return false;
       return !q||g.name.toLowerCase().includes(q)||g.subs.some(s=>s.name.toLowerCase().includes(q));
@@ -465,14 +541,21 @@ ${subMetaHtml(s,g.id)}</div>`).join('');
     c.innerHTML=visible.map(g=>{
       const isOpen=g.open!==false;
       const filtered=q?g.subs.filter(s=>s.name.toLowerCase().includes(q)||g.name.toLowerCase().includes(q)):g.subs;
-      return`<div class="group"><div class="group-header" onclick="toggleGroup('${g.id}')">
-<span class="color-dot" style="background:${g.color}"></span>
-<span class="group-title">${esc(g.name)}</span>
-${g.tag?`<span class="tag-badge">${esc(g.tag)}</span>`:''}
-<span class="priority-badge ${priClass(g.pri)}">${priLabel(g.pri)}</span>
-<span class="group-badge">${filtered.length}</span>
-<i class="ti ti-chevron-down chevron${isOpen?' open':''}"></i>
-</div>${isOpen?`<div class="group-body">${filtered.map(s=>subHtml(s,g.id)).join('')}<div style="padding:.6rem 1rem"><button class="btn sm" onclick="openNewSubModal('${g.id}')"><i class="ti ti-plus"></i> 新增小項目</button></div></div>`:''}</div>`;
+      return`<div class="group">
+<div class="group-header">
+  <div class="group-header-click" onclick="toggleGroup('${g.id}')">
+    <span class="color-dot" style="background:${g.color}"></span>
+    <span class="group-title">${esc(g.name)}</span>
+    ${g.tag?`<span class="tag-badge">${esc(g.tag)}</span>`:''}
+    <span class="priority-badge ${priClass(g.pri)}">${priLabel(g.pri)}</span>
+    <span class="group-badge">${filtered.length}</span>
+    <i class="ti ti-chevron-down chevron${isOpen?' open':''}"></i>
+  </div>
+  <div class="more-menu-wrap">
+    <button class="more-btn" onclick="toggleMoreMenu('${g.id}',this)" title="更多操作"><i class="ti ti-dots-vertical"></i></button>
+  </div>
+</div>
+${isOpen?`<div class="group-body">${filtered.map(s=>subHtml(s,g.id)).join('')}<div style="padding:.6rem 1rem"><button class="btn sm" onclick="openNewSubModal('${g.id}')"><i class="ti ti-plus"></i> 新增小項目</button></div></div>`:''}</div>`;
     }).join('');
   }
 }
@@ -484,11 +567,15 @@ function subTitleRowHtml(s,gid){
 <span class="sub-title">${esc(s.name)}</span>
 <span class="priority-badge ${priClass(s.pri)}">${priLabel(s.pri)}</span>
 <span class="status-badge ${statusClass(pct)}">${statusLabel(pct)}</span>
-<div class="prog-inline">
+<div class="prog-wrap">
   <input type="range" class="prog-slider" min="0" max="100" step="20" value="${pct}" oninput="updateProg('${gid}','${s.id}',+this.value)" style="accent-color:${barColor}">
   <span class="prog-pct" id="pp-${s.id}">${pct}%</span>
 </div>
-${pct===100?`<button class="btn success-btn" onclick="completeSub('${gid}','${s.id}')"><i class="ti ti-check"></i> 完成</button>`:`<span style="width:62px;display:inline-block"></span>`}
+<div class="sub-actions">
+  ${pct===100?`<button class="btn success-btn" onclick="completeSub('${gid}','${s.id}')"><i class="ti ti-check"></i> 完成</button>`:`<span style="width:62px;display:inline-block"></span>`}
+  <button class="btn sm" onclick="openEditSubModal('${gid}','${s.id}')" title="編輯"><i class="ti ti-pencil"></i></button>
+  <button class="btn sm danger" onclick="deleteSub('${gid}','${s.id}')" title="刪除"><i class="ti ti-trash"></i></button>
+</div>
 </div>`;
 }
 
@@ -496,9 +583,6 @@ function subMetaHtml(s,gid){
   return`<div class="meta-fields">
 <div class="meta-field"><label>備註</label><input type="text" value="${esc(s.ref||'')}" placeholder="備註說明" onchange="updateMeta('${gid}','${s.id}','ref',this.value)"></div>
 <div class="meta-field"><label>討論/說明</label><textarea placeholder="需要討論或補充的事項..." onchange="updateMeta('${gid}','${s.id}','note',this.value)">${esc(s.note||'')}</textarea></div>
-</div>
-<div style="display:flex;justify-content:flex-end;margin-top:6px">
-  <button class="btn sm" style="color:#E24B4A;border-color:#f7c1c1" onclick="deleteSub('${gid}','${s.id}')"><i class="ti ti-trash"></i> 刪除</button>
 </div>`;
 }
 
@@ -515,9 +599,12 @@ function updateProg(gid,sid,val){
     const pp=el.querySelector('.prog-pct');if(pp)pp.textContent=val+'%';
     const slider=el.querySelector('.prog-slider');if(slider)slider.style.accentColor=barColor;
     const badge=el.querySelector('.status-badge');if(badge){badge.className='status-badge '+statusClass(val);badge.textContent=statusLabel(val)}
-    const doneBtn=el.querySelector('.btn.success-btn');const ph=el.querySelector('span[style*="width:62px"]');
-    if(val===100&&!doneBtn){const btn=document.createElement('button');btn.className='btn success-btn';btn.innerHTML='<i class="ti ti-check"></i> 完成';btn.onclick=()=>completeSub(gid,sid);el.querySelector('.sub-title-row').appendChild(btn);if(ph)ph.remove();}
-    else if(val!==100&&doneBtn){doneBtn.remove();const sp=document.createElement('span');sp.style.cssText='width:62px;display:inline-block';el.querySelector('.sub-title-row').appendChild(sp);}
+    const actions=el.querySelector('.sub-actions');
+    if(actions){
+      const doneBtn=actions.querySelector('.btn.success-btn');const ph=actions.querySelector('span[style*="width:62px"]');
+      if(val===100&&!doneBtn){const btn=document.createElement('button');btn.className='btn success-btn';btn.innerHTML='<i class="ti ti-check"></i> 完成';btn.onclick=()=>completeSub(gid,sid);actions.insertBefore(btn,actions.firstChild);if(ph)ph.remove();}
+      else if(val!==100&&doneBtn){doneBtn.remove();const sp=document.createElement('span');sp.style.cssText='width:62px;display:inline-block';actions.insertBefore(sp,actions.firstChild);}
+    }
   }
   debouncedSync(s,g,false);
 }
@@ -525,31 +612,74 @@ function updateMeta(gid,sid,field,val){
   const g=data.groups.find(x=>x.id===gid);const s=g&&g.subs.find(x=>x.id===sid);
   if(s){s[field]=val;save();debouncedSync(s,g,false);}
 }
-let _db={};
 function debouncedSync(s,g,isDone){if(_db[s.id])clearTimeout(_db[s.id]);_db[s.id]=setTimeout(()=>syncRow(s,g,isDone),1200);}
 
 /* MATRIX */
 function renderMatrix(){
   const zones={I:[],II:[],III:[],IV:[]};
-  data.groups.forEach(g=>{const q=quadrant(g.urg,g.imp);if(g.subs.length)g.subs.forEach(s=>zones[q].push({dot:s.color,label:`${s.name} — ${g.name}`,pri:s.pri}));else zones[q].push({dot:g.color,label:g.name,pri:g.pri});});
-  ['I','II','III','IV'].forEach(q=>{const el=document.getElementById('chips-'+q);if(!el)return;el.innerHTML=zones[q].length?zones[q].map(c=>`<span class="q-chip"><span class="dot" style="background:${c.dot}"></span><span>${esc(c.label)}</span><span class="priority-badge ${priClass(c.pri)}" style="margin-left:4px;font-size:10px">${priLabel(c.pri)}</span></span>`).join(''):'<span style="font-size:12px;color:var(--text3)">無工項</span>';});
+  data.groups.forEach(g=>{
+    const q=quadrant(g.urg,g.imp);
+    if(g.subs.length)g.subs.forEach(s=>zones[q].push({dot:s.color,label:`${s.name}`,sublabel:g.name,pri:s.pri,gid:g.id,sid:s.id}));
+    else zones[q].push({dot:g.color,label:g.name,sublabel:'',pri:g.pri,gid:g.id,sid:null});
+  });
+  ['I','II','III','IV'].forEach(q=>{
+    const el=document.getElementById('chips-'+q);if(!el)return;
+    el.innerHTML=zones[q].length
+      ?zones[q].map(c=>`<span class="q-chip" onclick="openEditFromMatrix('${c.gid}','${c.sid||''}')">
+<span class="dot" style="background:${c.dot}"></span>
+<span style="display:flex;flex-direction:column;line-height:1.3">
+  <span>${esc(c.label)}</span>
+  ${c.sublabel?`<span style="font-size:10px;color:var(--text3)">${esc(c.sublabel)}</span>`:''}
+</span>
+<span class="priority-badge ${priClass(c.pri)}" style="margin-left:4px;font-size:10px">${priLabel(c.pri)}</span>
+</span>`).join('')
+      :'<span style="font-size:12px;color:var(--text3)">無工項</span>';
+  });
+}
+
+function openEditFromMatrix(gid,sid){
+  if(sid)openEditSubModal(gid,sid);
+  else openEditGroupModal(gid);
 }
 
 /* ACCOMPLISH */
 function renderAccomplish(){
-  const sort=document.getElementById('accSort').value;const c=document.getElementById('accomplishContainer');
-  if(!data.accomplished.length){c.innerHTML='<div class="empty"><i class="ti ti-trophy" style="font-size:32px;display:block;margin-bottom:8px"></i>尚無完成工項</div>';return}
-  const sorted=[...data.accomplished].sort((a,b)=>sort==='done'?(b.doneAt-a.doneAt):(b.createdAt-a.createdAt));
+  const sort=document.getElementById('accSort').value;
+  const filterTag=document.getElementById('accFilterTag').value;
+  const c=document.getElementById('accomplishContainer');
+  let items=data.accomplished.filter(a=>!filterTag||a.groupTag===filterTag);
+  if(!items.length){c.innerHTML='<div class="empty"><i class="ti ti-trophy" style="font-size:32px;display:block;margin-bottom:8px"></i>尚無完成工項</div>';return}
+  const sorted=[...items].sort((a,b)=>sort==='done'?(b.doneAt-a.doneAt):(b.createdAt-a.createdAt));
   const byGroup={};sorted.forEach(a=>{if(!byGroup[a.groupId])byGroup[a.groupId]={name:a.groupName,color:a.groupColor,tag:a.groupTag||'',items:[]};byGroup[a.groupId].items.push(a);});
-  c.innerHTML=Object.entries(byGroup).map(([gid,grp])=>`<div class="acc-group"><div class="acc-group-hdr"><span style="width:11px;height:11px;border-radius:50%;background:${grp.color};display:inline-block;flex-shrink:0"></span><span class="acc-group-name">${esc(grp.name)}</span>${grp.tag?`<span class="tag-badge">${esc(grp.tag)}</span>`:''}<span class="group-badge">${grp.items.length} 項完成</span></div>${grp.items.map(a=>`<div class="acc-item"><div class="acc-item-row"><span class="acc-dot" style="background:${a.color}"></span><div class="acc-info"><div class="acc-name">${esc(a.name)}</div><div class="acc-ts"><span><i class="ti ti-clock" style="font-size:12px;vertical-align:-1px"></i> 建立 ${fmtTs(a.createdAt)}</span><span><i class="ti ti-circle-check" style="font-size:12px;vertical-align:-1px;color:var(--success)"></i> 完成 ${fmtTs(a.doneAt)}</span></div>${a.note?`<div class="acc-note">${esc(a.note)}</div>`:''}</div><button class="btn sm" onclick="openEditAcc('${a.id}')" style="flex-shrink:0;margin-left:6px"><i class="ti ti-pencil"></i></button></div></div>`).join('')}</div>`).join('');
+  c.innerHTML=Object.entries(byGroup).map(([gid,grp])=>`<div class="acc-group">
+<div class="acc-group-hdr">
+  <span style="width:11px;height:11px;border-radius:50%;background:${grp.color};display:inline-block;flex-shrink:0"></span>
+  <span class="acc-group-name">${esc(grp.name)}</span>
+  ${grp.tag?`<span class="tag-badge">${esc(grp.tag)}</span>`:''}
+  <span class="group-badge">${grp.items.length} 項完成</span>
+</div>
+${grp.items.map(a=>`<div class="acc-item"><div class="acc-item-row">
+<span class="acc-dot" style="background:${a.color}"></span>
+<div class="acc-info">
+  <div class="acc-name">${esc(a.name)}</div>
+  <div class="acc-ts">
+    <span><i class="ti ti-clock" style="font-size:12px;vertical-align:-1px"></i> 建立 ${fmtTs(a.createdAt)}</span>
+    <span><i class="ti ti-circle-check" style="font-size:12px;vertical-align:-1px;color:var(--success)"></i> 完成 ${fmtTs(a.doneAt)}</span>
+  </div>
+  ${a.note?`<div class="acc-note">${esc(a.note)}</div>`:''}
+</div>
+<button class="btn sm" onclick="openEditAcc('${a.id}')" style="flex-shrink:0;margin-left:6px"><i class="ti ti-pencil"></i></button>
+</div></div>`).join('')}
+</div>`).join('');
 }
+
 function openEditAcc(id){const a=data.accomplished.find(x=>x.id===id);if(!a)return;document.getElementById('eaId').value=id;document.getElementById('eaCreated').value=toLocal(a.createdAt);document.getElementById('eaDone').value=toLocal(a.doneAt);document.getElementById('eaNote').value=a.note||'';document.getElementById('editAccModal').classList.remove('hidden');}
 function saveEditAcc(){
   const id=document.getElementById('eaId').value;const a=data.accomplished.find(x=>x.id===id);if(!a)return;
   const cr=document.getElementById('eaCreated').value;const dn=document.getElementById('eaDone').value;
   if(cr)a.createdAt=new Date(cr).getTime();if(dn)a.doneAt=new Date(dn).getTime();a.note=document.getElementById('eaNote').value;
   save();document.getElementById('editAccModal').classList.add('hidden');renderAccomplish();
-  syncRow(a,{id:a.groupId,name:a.groupName},true);
+  syncRow(a,{id:a.groupId,name:a.groupName,tag:a.groupTag},true);
 }
 
 /* EXPORT PAGE */
@@ -563,7 +693,6 @@ function saveScriptUrl(){
   scriptUrl=u;localStorage.setItem(LS_GS,u);renderExportPage();showToast('已儲存');pingScript();
 }
 function disconnectGSheet(){scriptUrl='';localStorage.removeItem(LS_GS);renderExportPage();setSyncStatus('','未連接 Google Sheets');showToast('已中斷連接');}
-
 async function pingScript(){
   if(!scriptUrl)return;setSyncStatus('syncing','連接中...');
   try{await fetch(scriptUrl,{method:'GET',mode:'no-cors'});setSyncStatus('ok','已連接 Google Sheets');setSyncLog('連接正常');}
@@ -574,7 +703,6 @@ function rowFromItem(s,g,isDone){
   const gName=g.name||g.groupName||'';const gTag=g.tag||g.groupTag||'';
   return[getYear(s.createdAt),gName,gTag,s.name,priLabel(s.pri),statusLabel(isDone?100:s.prog),(isDone?100:(s.prog||0))+'%',s.ref||'',s.note||'',fmtTs(s.createdAt),isDone?fmtTs(s.doneAt):'',s.id];
 }
-
 async function syncRow(s,g,isDone){
   if(!scriptUrl)return;setSyncStatus('syncing','同步中...');
   try{
@@ -586,7 +714,6 @@ async function syncRow(s,g,isDone){
   }catch(e){setSyncStatus('err','同步失敗');}
 }
 
-/* EXPORT */
 function buildRows(){
   const rows=[];
   data.groups.forEach(g=>g.subs.forEach(s=>rows.push({年份:getYear(s.createdAt),大項目:g.name,標籤:g.tag||'',小項目:s.name,優先度:priLabel(s.pri),狀態:statusLabel(s.prog),進度:s.prog+'%',備註:s.ref||'',討論說明:s.note||'',建立時間:fmtTs(s.createdAt),完成時間:''})));
